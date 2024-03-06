@@ -9,6 +9,12 @@ class TestBaseModel(unittest.TestCase):
         with open("file.json", encoding="utf-8", mode="w") as f:
             pass
 
+    def test_module_docstring(self):
+        """Tests for module docstring"""
+
+        docstr = __import__("models.base_model").__doc__
+        self.assertEqual(True, len(docstr) > 1)
+
     def test_instantization(self):
         """Instanties a BaseModel class"""
 
@@ -16,6 +22,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(BaseModel, type(b1))
 
     def test_instantization_with_kwargs(self):
+        """Tests the instantization of base model class with ***kwargs"""
         b1 = BaseModel()
         inst = b1.__dict__.copy()
         inst["id"] = "7"
@@ -33,14 +40,17 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(datetime, type(BaseModel().created_at))
 
     def test_updated_at(self):
+        """Tests the updated_at attribute for a base model class"""
         self.assertEqual(datetime, type(BaseModel().updated_at))
 
     def test_str(self):
+        """Tests the string representation of a BaseModel instance"""
         b1 = BaseModel()
         val = f"[BaseModel] ({b1.id}) {b1.__dict__}"
         self.assertEqual(val, str(b1))
 
     def test_save(self):
+        """Tests the save method of the BaseModel class"""
         b1 = BaseModel()
         prev = b1.updated_at
         b1.save()

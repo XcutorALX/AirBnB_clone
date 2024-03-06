@@ -46,14 +46,14 @@ class TestFileStorage(unittest.TestCase):
         b1 = BaseModel()
         u1 = User()
         b2 = BaseModel()
-        u2 = User()
+        u2 = user()
         b3 = BaseModel()
         u3 = User()
         b4 = BaseModel()
         u4 = User()
 
         result = {}
-        for b in [b1, u1, b2, u2, b3, u3, b4, u4]:
+        for b in [b1, b2, b3, b4, b5, b6]:
             result[f"{b.__class__.__name__}.{b.id}"] = b
         test = self.storage.all()
         self.assertEqual(test, result)
@@ -65,10 +65,8 @@ class TestFileStorage(unittest.TestCase):
         b2 = BaseModel()
         b3 = BaseModel()
         b4 = BaseModel()
-        u1 = User()
-        u2 = User()
-        u3 = User()
-        u4 = User()
+        b5 = BaseModel()
+        b6 = BaseModel()
 
         with open("file.json", encoding="utf-8", mode="w") as f:
             pass
@@ -83,10 +81,8 @@ class TestFileStorage(unittest.TestCase):
         b2 = BaseModel()
         b3 = BaseModel()
         b4 = BaseModel()
-        u1 = User()
-        u2 = User()
-        u3 = User()
-        u4 = User()
+        b5 = BaseModel()
+        b6 = BaseModel()
 
         result = self.storage.all()
         with open("file.json", encoding="utf-8", mode="w") as f:
@@ -109,10 +105,8 @@ class TestFileStorage(unittest.TestCase):
         b2 = BaseModel()
         b3 = BaseModel()
         b4 = BaseModel()
-        u1 = User()
-        u2 = User()
-        u3 = User()
-        u4 = User()
+        b5 = BaseModel()
+        b6 = BaseModel()
 
         result = self.storage.all()
         resultDict = {i: result[i].to_dict() for i in result}
@@ -139,10 +133,8 @@ class TestFileStorage(unittest.TestCase):
         b2 = BaseModel()
         b3 = BaseModel()
         b4 = BaseModel()
-        u1 = User()
-        u2 = User()
-        u3 = User()
-        u4 = User()
+        b5 = BaseModel()
+        b6 = BaseModel()
 
         result = self.storage.all()
         resultDict = {i: result[i].to_dict() for i in result}
