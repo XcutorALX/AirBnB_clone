@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+import re
 import cmd
 import models
+import shlex
 """The entry point of the ciommand interpreter"""
 
 
@@ -20,11 +22,41 @@ class HBNBCommand(cmd.Cmd):
     def emptyline():
         pass
 
+    @staticmethod
+    def precmd(line):
+        """Executes before line is interpreted"""
+
+        r = "(\w+\.\w+)\((.*)\)"
+        m = re.search(r, line)
+        if not m:
+            return line
+        else:
+            args = m.group(1).split('.')
+            param = m.group(2).split(",")
+            param = [ i.strip(" ") for i in param ]
+            param = " ".join(param)
+            return (f"{args[1]} {args[0]} {param}")
+
+    def do_count(self, arg):
+        """Counts the instances of a class"""
+
+        args = shlex.split(arg)
+        length = len(args)
+        if not arg:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.classMapping:
+            print("** class doesn't exist **")
+        else:
+            cls = HBNBCommand.classMapping[args[0]]
+            objs = models.storage.all()
+            num = sum([type(objs[i]) == cls for i in objs])
+            print(num)
+
     def do_update(self, arg):
         """ Updates an instance based on the class name and\
                 id by adding or updating attribute"""
 
-        args = arg.split(" ")
+        args = shlex.split(arg)
         length = len(args)
         if not arg:
             print("** class name missing **")
@@ -61,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id"""
 
-        args = arg.split(" ")
+        args = shlex.split(arg)
         length = len(args)
 
         if not arg:
@@ -93,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Prints the string representation of an instance based on the\
 class name and id. Ex: $ show BaseModel 1234-1234-1234"""
-        args = arg.split(" ")
+        args = shlex.split(arg)
         length = len(args)
 
         if not arg:
