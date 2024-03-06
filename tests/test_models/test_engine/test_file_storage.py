@@ -1,0 +1,144 @@
+#!/usr/bin/python3
+import unittest
+import json
+import os
+from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
+"""Test case for FileStorage class"""
+
+class TestFileStorage(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.storage = FileStorage()
+    
+    def setUp(self):
+        self.storage = TestFileStorage.storage
+        self.storage.reload()
+
+    def tearDown(self):
+        with open("file.json", encoding="utf-8", mode="w") as f:
+            pass
+
+    def test_module_docstring(self):
+        """Test for docstring in the base_model module"""
+
+        docstr = __import__("models.engine.file_storage").__doc__
+        self.assertEqual(True, len(docstr) > 0)
+
+    def test_new(self):
+        """Test the new method of storage class"""
+        self.maxDiff = None
+        storage = FileStorage()
+        b1 = BaseModel()
+        result = {f"{b1.__class__.__name__}.{b1.id}": b1}
+        test = self.storage.all()
+        self.assertEqual(result, test)
+
+        b2 = BaseModel()
+        result[f"{b2.__class__.__name__}.{b2.id}"] = b2
+        test = self.storage.all()
+        self.assertEqual(result, test)
+
+    def test_all(self):
+        """Tests the all method of the storage class"""
+
+        b1 = BaseModel()
+        b2 = BaseModel()
+        b3 = BaseModel()
+        b4 = BaseModel()
+        b5 = BaseModel()
+        b6 = BaseModel()
+
+        result = {}
+        for b in [b1, b2, b3, b4, b5, b6]:
+            result[f"{b.__class__.__name__}.{b.id}"] = b
+        test = self.storage.all()
+        self.assertEqual(test, result)
+
+    def test_reload_with_empty_file(self):
+        """Tests the reload method of FileStorage when file.json is empty"""
+
+        b1 = BaseModel()
+        b2 = BaseModel()
+        b3 = BaseModel()
+        b4 = BaseModel()
+        b5 = BaseModel()
+        b6 = BaseModel()
+
+        with open("file.json", encoding="utf-8", mode="w") as f:
+            pass
+
+        self.storage.reload()
+        self.assertEqual(self.storage.all(), {})
+
+    def test_reload_with_non_empty_file(self):
+        """Tests the reload method of FileStorage when file.json is not empty"""
+
+        b1 = BaseModel()
+        b2 = BaseModel()
+        b3 = BaseModel()
+        b4 = BaseModel()
+        b5 = BaseModel()
+        b6 = BaseModel()
+
+        result = self.storage.all()
+        with open("file.json", encoding="utf-8", mode="w") as f:
+            pass
+
+        self.storage.reload()
+        with open("file.json", encoding="utf-8", mode="w") as f:
+            objDict = {i: result[i].to_dict() for i in result}
+            json.dump(objDict, f)
+        self.storage.reload()
+        test = self.storage.all()
+        resultDict = {i: result[i].to_dict() for i in result}
+        testDict = {i: test[i].to_dict() for i in test}
+        self.assertEqual(testDict, resultDict)
+
+    def test_reload_with_change_in_file(self):
+        """Tests the reload method when there is a change in file.json"""
+        
+        b1 = BaseModel()
+        b2 = BaseModel()
+        b3 = BaseModel()
+        b4 = BaseModel()
+        b5 = BaseModel()
+        b6 = BaseModel()
+
+        result = self.storage.all()
+        resultDict = {i: result[i].to_dict() for i in result}
+        resultDict["BaseMode.999"] = b1.to_dict()
+        resultDict["BaseMode.999"]["id"] = "999"
+        with open("file.json", encoding="utf-8", mode="w") as f:
+            json.dump(resultDict, f)
+
+        self.storage.reload()
+        test = self.storage.all()
+        testDict = {i: test[i].to_dict() for i in test}
+        self.assertEqual(testDict, resultDict)
+
+    def test_reeload_with_file_not_exist(self):
+        """Tests the reload method of FileStorage when file.json doesn't exist"""
+
+        os.remove("./file.json")
+        self.storage.reload()
+
+    def test_save(self):
+        """Tests the save method of the FileStorage class"""
+
+        b1 = BaseModel()
+        b2 = BaseModel()
+        b3 = BaseModel()
+        b4 = BaseModel()
+        b5 = BaseModel()
+        b6 = BaseModel()
+
+        result = self.storage.all()
+        resultDict = {i: result[i].to_dict() for i in result}
+        with open("file.json", encoding="utf-8", mode="w") as f:
+            pass
+        
+        self.storage.save()
+
+        with open("file.json", encoding="utf-8") as f:
+            self.assertEqual(json.load(f), resultDict)

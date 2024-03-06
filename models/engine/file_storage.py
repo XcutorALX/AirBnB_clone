@@ -49,9 +49,9 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, mode="r", encoding="utf-8") as f:
                 value = json.load(f)
-                objs = {i: class_mapping[value[i]["__class__"]](value[i]) for i in value}
+                objs = {i: class_mapping[value[i]["__class__"]](**value[i]) for i in value}
                 FileStorage.__objects = objs
         except (json.JSONDecodeError, FileNotFoundError) as e:
-            if e == json.JSONDecodeError:
+            if isinstance(e, json.JSONDecodeError):
                 FileStorage.__objects = {}
             pass
