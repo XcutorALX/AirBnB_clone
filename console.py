@@ -3,6 +3,7 @@ import re
 import cmd
 import models
 import shlex
+import json
 """The entry point of the ciommand interpreter"""
 
 
@@ -32,10 +33,11 @@ class HBNBCommand(cmd.Cmd):
             return line
         else:
             args = m.group(1).split('.')
-            param = m.group(2).split(",")
+            param = m.group(2).replace("{", "'{").replace("}", "}'")
+            param = param.split(',')
             param = [ i.strip(" ") for i in param ]
-            param = " ".join(param)
-            return (f"{args[1]} {args[0]} {param}")
+            line = " ".join(param)
+            return (f'{args[1]} {args[0]} {line}')
 
     def do_count(self, arg):
         """Counts the instances of a class"""
@@ -58,22 +60,32 @@ class HBNBCommand(cmd.Cmd):
 
         args = shlex.split(arg)
         length = len(args)
+        objs = models.storage.all()
         if not arg:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.classMapping:
             print("** class doesn't exist **")
         elif length < 2:
             print("** instance id missing **")
-        elif f"{args[0]}.{args[1]}" not in models.storage.all():
+        elif f"{args[0]}.{args[1]}" not in objs:
             print("** no instance found **")
         elif length < 3:
             print("** attribute name missing **")
-        elif length < 4:
-            print("** value missing **")
         else:
+            print(args[2])
+            param = shlex.split(args[2])
+            pattern = r'"(\w+)": "?(\w+)"?'
             key = f"{args[0]}.{args[1]}"
-            setattr(models.storage.all()[key], args[2], args[3])
-            models.storage.save()
+            matches = re.findall(pattern, args[2])
+            if matches:
+                for m in matches:
+                    print(m)
+                    setattr(objs[key], m[0], m[1])
+            elif length < 4:
+                    print("** value missing **")
+            else:
+                setattr(objs[key], args[2], args[3])
+                models.storage.save()
 
     def do_all(self, arg):
         """Prints all string representation of all instances\
