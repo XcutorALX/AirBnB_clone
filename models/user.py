@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+"""This module contians a User class"""
+
+
 from models.base_model import BaseModel
-"""This module contains a User class"""
 
 
 class User(BaseModel):
