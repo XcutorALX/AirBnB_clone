@@ -273,3 +273,6 @@ class TestDestroy(unittest.TestCase):
                 out = f.getvalue().rstrip("\n")
                 self.assertEqual(out, "")
             i += 1
+
+if __name__ == "__main__":
+    unittest.main()
