@@ -265,8 +265,8 @@ class TestDestroy(unittest.TestCase):
                 self.assertEqual(out, "")
             else:
                 with patch('sys.stdout', new=StringIO()) as f:
-                    command = HBNBCommand().precmd(f"{args[0]}.\
-                                                    destroy({args[1]})")
+                    command = HBNBCommand().precmd(f"{args[0]}."
+                                                   + f"destroy({args[1]})")
                     HBNBCommand().onecmd(command)
                     result = cls not in self.storage.all()
                     self.assertEqual(result, True)
