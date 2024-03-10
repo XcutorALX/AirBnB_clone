@@ -69,7 +69,8 @@ class HBNBCommand(cmd.Cmd):
             return (f'{args[1]} {args[0]} {line}'.strip(" "))
 
     def do_count(self, arg):
-        """Counts the instances of a class"""
+        """Counts the instances of a class
+        """
 
         args = self.parser(arg, " ")
         length = len(args)
@@ -84,8 +85,9 @@ class HBNBCommand(cmd.Cmd):
             print(num)
 
     def do_update(self, arg):
-        """ Updates an instance based on the class name and\
-                id by adding or updating attribute"""
+        """Updates an instance based on the class name and\
+id by adding or updating attribute
+        """
 
         args = self.parser(arg, " ")
         length = len(args)
@@ -119,7 +121,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation of all instances\
-            based or not on the class name."""
+based or not on the class name.
+        """
         if not arg:
             for val in models.storage.all().values():
                 print(val)
@@ -133,7 +136,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id"""
+        """Deletes an instance based on the class name and id
+        """
 
         args = self.parser(arg, " ")
         length = len(args)
@@ -154,7 +158,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_create(self, arg):
-        """Creates an instance of the specified class i.e (create <class>)"""
+        """Creates an instance of the specified class i.e (create <class>)
+        """
         if not arg:
             print("** class name missing **")
         elif arg not in HBNBCommand.classMapping:
@@ -166,7 +171,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Prints the string representation of an instance based on the\
-class name and id. Ex: $ show BaseModel 1234-1234-1234"""
+class name and id. Ex: $ show BaseModel 1234-1234-1234
+        """
         args = self.parser(arg, " ")
         length = len(args)
 
@@ -185,11 +191,13 @@ class name and id. Ex: $ show BaseModel 1234-1234-1234"""
                 print("** no instance found **")
 
     def do_quit(self, arg):
-        """Quit command to exit the program"""
+        """Quit command to exit the program
+        """
         return (True)
 
     def do_EOF(self, arg):
-        """EOF character to exit the program"""
+        """EOF character to exit the program
+        """
         print()
         return (True)
 
