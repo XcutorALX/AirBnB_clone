@@ -3,8 +3,9 @@ from datetime import datetime
 import unittest
 """This model contains the unnitest cases for the base model class"""
 
-class TestBaseModel(unittest.TestCase):
 
+class TestBaseModel(unittest.TestCase):
+    """Test case for the BaseModel class"""
     def tearDown(self):
         with open("file.json", encoding="utf-8", mode="w") as f:
             pass
@@ -29,8 +30,8 @@ class TestBaseModel(unittest.TestCase):
         inst2 = b1.to_dict()
         inst2["id"] = "7"
         model = {"__class__": "BaseModel", "id": "7",
-                "updated_at": b1.updated_at.isoformat(),
-                "created_at": b1.created_at.isoformat()}
+                 "updated_at": b1.updated_at.isoformat(),
+                 "created_at": b1.created_at.isoformat()}
         b2 = BaseModel(**model)
         self.assertEqual(inst, b2.__dict__)
         self.assertEqual(inst2, b2.to_dict())

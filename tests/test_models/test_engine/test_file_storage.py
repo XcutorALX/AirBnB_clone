@@ -7,11 +7,12 @@ from models.user import User
 from models.base_model import BaseModel
 """Test case for FileStorage class"""
 
+
 class TestFileStorage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.storage = FileStorage()
-    
+
     def setUp(self):
         self.storage = TestFileStorage.storage
         self.storage.reload()
@@ -77,7 +78,8 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(self.storage.all(), {})
 
     def test_reload_with_non_empty_file(self):
-        """Tests the reload method of FileStorage when file.json is not empty"""
+        """Tests the reload method of FileStorage
+        when file.json is not empty"""
 
         b1 = BaseModel()
         b2 = BaseModel()
@@ -104,7 +106,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload_with_change_in_file(self):
         """Tests the reload method when there is a change in file.json"""
-        
+
         b1 = BaseModel()
         b2 = BaseModel()
         b3 = BaseModel()
@@ -127,7 +129,8 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(testDict, resultDict)
 
     def test_reeload_with_file_not_exist(self):
-        """Tests the reload method of FileStorage when file.json doesn't exist"""
+        """Tests the reload method of FileStorage
+        when file.json doesn't exist"""
 
         os.remove("./file.json")
         self.storage.reload()
@@ -148,7 +151,7 @@ class TestFileStorage(unittest.TestCase):
         resultDict = {i: result[i].to_dict() for i in result}
         with open("file.json", encoding="utf-8", mode="w") as f:
             pass
-        
+
         self.storage.save()
 
         with open("file.json", encoding="utf-8") as f:

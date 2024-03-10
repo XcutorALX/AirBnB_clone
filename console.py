@@ -20,6 +20,37 @@ class HBNBCommand(cmd.Cmd):
             }
 
     @staticmethod
+    def parser(arg, delim):
+        """Static method for parsing arguments"""
+        split = {
+            "isSplit": 1,
+            "escChar": ""
+        }
+        start = 0
+        args = []
+
+        for i in range(len(arg)):
+
+            c = arg[i]
+            if c == delim and split["isSplit"]:
+                end = i
+                args.append(arg[start:end].strip(" "))
+                start = i + 1
+            elif c in ["'", "{", "\"", "}"]:
+                if not split["isSplit"] and c != "{":
+                    if c == split["escChar"]:
+                        split["isSplit"] = 1
+                else:
+                    split["isSplit"] = 0
+                    if c == "{":
+                        split['escChar'] = '}'
+                    else:
+                        split["escChar"] = c
+
+        args.append(arg[start:len(arg)].strip(" "))
+        return (args)
+
+    @staticmethod
     def emptyline():
         pass
 
@@ -27,22 +58,20 @@ class HBNBCommand(cmd.Cmd):
     def precmd(line):
         """Executes before line is interpreted"""
 
-        r = "(\w+\.\w+)\((.*)\)"
+        r = r"(\w+\.\w+)\((.*)\)"
         m = re.search(r, line)
         if not m:
             return line
         else:
             args = m.group(1).split('.')
-            param = m.group(2).replace("{", "'{").replace("}", "}'")
-            param = param.split(',')
-            param = [ i.strip(" ") for i in param ]
+            param = HBNBCommand.parser(m.group(2), ",")
             line = " ".join(param)
-            return (f'{args[1]} {args[0]} {line}')
+            return (f'{args[1]} {args[0]} {line}'.strip(" "))
 
     def do_count(self, arg):
         """Counts the instances of a class"""
 
-        args = shlex.split(arg)
+        args = self.parser(arg, " ")
         length = len(args)
         if not arg:
             print("** class name missing **")
@@ -58,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
         """ Updates an instance based on the class name and\
                 id by adding or updating attribute"""
 
-        args = shlex.split(arg)
+        args = self.parser(arg, " ")
         length = len(args)
         objs = models.storage.all()
         if not arg:
@@ -72,17 +101,18 @@ class HBNBCommand(cmd.Cmd):
         elif length < 3:
             print("** attribute name missing **")
         else:
-            print(args[2])
-            param = shlex.split(args[2])
-            pattern = r'"(\w+)": "?(\w+)"?'
+            line = args[2]
+            pattern = r"{(.*)}"
             key = f"{args[0]}.{args[1]}"
-            matches = re.findall(pattern, args[2])
+            matches = re.search(pattern, args[2])
             if matches:
-                for m in matches:
-                    print(m)
-                    setattr(objs[key], m[0], m[1])
+                attr_dict = matches.group(1)
+                attrs = self.parser(attr_dict, ",")
+                for attr in attrs:
+                    attr = self.parser(attr, ":")
+                    setattr(objs[key], eval(attr[0]), eval(attr[1]))
             elif length < 4:
-                    print("** value missing **")
+                print("** value missing **")
             else:
                 setattr(objs[key], args[2], args[3])
                 models.storage.save()
@@ -94,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
             for val in models.storage.all().values():
                 print(val)
         else:
-            args = arg.split(" ")
+            args = self.parser(arg, " ")
             if args[0] in HBNBCommand.classMapping:
                 for val in models.storage.all().values():
                     if type(val) == HBNBCommand.classMapping[args[0]]:
@@ -105,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id"""
 
-        args = shlex.split(arg)
+        args = self.parser(arg, " ")
         length = len(args)
 
         if not arg:
@@ -137,7 +167,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Prints the string representation of an instance based on the\
 class name and id. Ex: $ show BaseModel 1234-1234-1234"""
-        args = shlex.split(arg)
+        args = self.parser(arg, " ")
         length = len(args)
 
         if not arg:
