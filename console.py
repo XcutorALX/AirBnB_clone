@@ -21,7 +21,8 @@ class HBNBCommand(cmd.Cmd):
 
     @staticmethod
     def parser(arg, delim):
-        """Static method for parsing arguments"""
+        """Static method for parsing arguments
+        """
         split = {
             "isSplit": 1,
             "escChar": ""
@@ -52,6 +53,8 @@ class HBNBCommand(cmd.Cmd):
 
     @staticmethod
     def emptyline():
+        """Defines the behavior for an emptyline as command
+        """
         pass
 
     @staticmethod
