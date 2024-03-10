@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+"""This module contains a HBNBCommand class"""
+
+
 import re
 import cmd
 import models
 import shlex
 import json
-"""The entry point of the ciommand interpreter"""
 
 
 class HBNBCommand(cmd.Cmd):
