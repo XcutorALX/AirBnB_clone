@@ -194,5 +194,5 @@ class name and id. Ex: $ show BaseModel 1234-1234-1234"""
         return (True)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
