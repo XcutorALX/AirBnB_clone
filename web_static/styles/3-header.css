@@ -1,6 +1,13 @@
 header {
 	background-color: white;
 	border-bottom: 1px #CCCCCC;
+	display: flex;
+	justify-content: left;
+	align-items: center;
 	height: 70px;
 	width: 100%;
+}
+
+.airbnb_logo {
+	margin-left: 20px;
 }
