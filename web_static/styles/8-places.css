@@ -44,7 +44,7 @@
 	align-items: center;
 }
 
-.max_guests, .number_rooms, .number_bathrooms {
+.max_guest, .number_rooms, .number_bathrooms {
 	width: 100px;
 	margin: auto 5px;
 }
