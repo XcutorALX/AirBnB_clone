@@ -5,7 +5,7 @@
 	border-radius: 4px;
 	display: flex;
 	height: 70px;
-	justify-content: right;
+	justify-content: space-between;
 	width: 100%;
 }
 
