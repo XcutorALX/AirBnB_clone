@@ -33,6 +33,9 @@
 	min-width: 60px;
 	height: 60px;
 	font-size: 30px;
+	position: fixed;
+	right: 20px;
+	top: 20px;
 }
 
 .information {
