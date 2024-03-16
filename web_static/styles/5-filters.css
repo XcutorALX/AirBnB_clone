@@ -35,10 +35,12 @@
 }
 
 .filters h3 {
-	font-weight: 600
+	font-weight: 600;
+	margin: 3px 0;
 }
 
 .filter h4 {
 	font-weight: 400;
-	font-size: 14px
+	font-size: 14px;
+	margin: 0
 }
