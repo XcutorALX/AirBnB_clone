@@ -27,6 +27,7 @@
 .amenities, .locations {
 	height: 100%;
 	width: 25%;
+	text-align: center;
 }
 
 .locations {
