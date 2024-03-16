@@ -19,6 +19,7 @@
 	margin: 20px;
 	padding: 20px;
 	border: 1px solid #FF5A5F;
+	position: relative;
 }
 
 .places h2 {
