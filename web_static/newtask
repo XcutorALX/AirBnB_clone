@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 2 ]
+then
+	cp "./styles/$1-common.css" "./styles/$2-common.css"
+	cp "./styles/$1-header.css" "./styles/$2-header.css"
+	cp "./styles/$1-footer.css" "./styles/$2-footer.css"
+	cp "./$1-index.html" "./$2-index.html"
+	sed -i "s|styles/$1|styles/$2|g" ./$2-index.html
+fi
