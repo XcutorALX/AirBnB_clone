@@ -5,6 +5,10 @@
 	box-sizing: border-box;
 }
 
+.filters li {
+	margin-bottom: 7px;
+}
+
 .filters {
 	align-items: center;
 	background-color: white;
