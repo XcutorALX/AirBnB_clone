@@ -106,4 +106,8 @@
 	h1 {
 		margin: 18px 0;
 	}
+
+	.places h2 {
+		padding-bottom: 40px;
+	}
 }
