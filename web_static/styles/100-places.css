@@ -29,16 +29,11 @@
 	position: relative;
 }
 
-article > h2 {
-	padding-bottom: 60px;
-	text-align: center;
-}
-
 .places h2 {
 	font-size: 30px;
 	margin: 0 auto;
-	padding-bottom: 30px;
-	text-align: left;
+	padding-bottom: 60px;
+	text-align: center;
 }
 
 .places .price_by_night {
@@ -85,6 +80,8 @@ article > h2 {
 .places .amenities > h2, .places .reviews h2 {
 	font-size: 16px;
 	border-bottom: 1px solid #DDDDDD;
+	padding-bottom: 30px;
+	text-align: center;
 }
 
 .places .amenities li {
