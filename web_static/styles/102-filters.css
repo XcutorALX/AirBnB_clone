@@ -70,8 +70,8 @@
 	display: block;
 }
 
-@media screen and (min-width: 760px) {
-	.fiters ul {
+@media screen and (max-width: 720px) {
+	.filters ul {
 		padding: 10px 0 10px 25px;
 	}
 
