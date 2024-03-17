@@ -78,4 +78,8 @@
 	.filters h2 {
 		margin: 12px 0; 
 	}
+
+	.popover ul {
+		padding: 0 0 8px 0;
+	}
 }
