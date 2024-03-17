@@ -84,4 +84,10 @@
 	.popover ul {
 		padding: 0 0 0 8px;
 	}
+
+	.amenities:hover > .popover, .locations:hover > .popover {
+		display: inline-block;
+		width: auto;
+		max-width: 150%;
+	}
 }
