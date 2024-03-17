@@ -70,6 +70,12 @@
 	display: block;
 }
 
-@media screen and (min-width: 480px) {
-	.fi
+@media screen and (min-width: 760px) {
+	.fiters ul {
+		padding: 10px 0 10px 25px;
+	}
+
+	.filters h2 {
+		margin: 12px 0; 
+	}
 }
