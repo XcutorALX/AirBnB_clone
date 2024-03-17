@@ -11,6 +11,7 @@
 
 .filters {
 	align-items: center;
+	justify-content: center;
 	background-color: white;
 	border: 1px solid #DDDDDD;
 	border-radius: 4px;
@@ -95,13 +96,5 @@
 		min-width: 100%;
 		width: auto;
 		max-width: 150%;
-	}
-
-	.filters h3 {
-		margin: auto;
-	}
-
-	.filters h4 {
-		margin: auto;
 	}
 }
