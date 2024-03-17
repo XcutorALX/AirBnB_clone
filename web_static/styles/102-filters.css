@@ -39,6 +39,7 @@
 	height: 100%;
 	width: 25%;
 	text-align: center;
+	position: relative;
 }
 
 .filters > .locations {
@@ -64,7 +65,7 @@
 	padding-bottom: 20px;
 	padding-top: 20px;
 	display: none;
-	position: relative;
+	position: absolute;
 	top: 50%;
 	z-index: 999;
 }
