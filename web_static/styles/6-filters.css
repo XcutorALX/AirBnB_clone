@@ -34,22 +34,22 @@
 	opacity: 90%;
 }
 
-.amenities, .locations {
+.filters > .amenities, .filters > .locations {
 	height: 100%;
 	width: 25%;
 	text-align: center;
 }
 
-.locations {
+.filters > .locations {
 	border-right: 1px solid #DDDDDD;
 }
 
-.filters h3 {
+.filters > h3 {
 	font-weight: 600;
 	margin-bottom: 0;
 }
 
-.filters h4 {
+.filters > h4 {
 	font-weight: 400;
 	font-size: 14px;
 	margin-top: 3px;
