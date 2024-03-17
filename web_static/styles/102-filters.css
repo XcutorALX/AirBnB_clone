@@ -103,4 +103,8 @@
 	.search-button {
 		height: 37px;
 	}
+
+	.filters .locations, .filters .amenities {
+		width: 28%;
+	}
 }
