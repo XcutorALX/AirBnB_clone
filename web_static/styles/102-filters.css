@@ -72,6 +72,10 @@
 }
 
 @media screen and (max-width: 720px) {
+	.filters {
+		height: 55px;
+	}
+
 	.filters ul {
 		padding: 10px 10px 10px 25px;
 	}
