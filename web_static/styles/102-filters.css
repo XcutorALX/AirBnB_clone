@@ -3,6 +3,7 @@
 	padding-left: 50px;
 	text-align: left;
 	box-sizing: border-box;
+	z-index: 999;
 }
 
 .filters li {
@@ -69,5 +70,6 @@
 	display: block;
 }
 
-@media screen and (min-width: 80rem) {
+@media screen and (min-width: 480px) {
+	.fi
 }
