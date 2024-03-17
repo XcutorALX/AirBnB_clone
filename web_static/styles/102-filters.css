@@ -1,6 +1,7 @@
 .filters ul {
 	list-style: none;
 	padding-left: 50px;
+	margin: 0;
 	text-align: left;
 	box-sizing: border-box;
 }
