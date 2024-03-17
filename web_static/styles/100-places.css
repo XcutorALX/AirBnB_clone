@@ -1,14 +1,14 @@
-.places > p {
+.places p {
 	margin: 5px 0;
 	padding: 0;
 }
 
-.places > ul {
+.places ul {
 	box-sizing: border-box;
 	list-style: none;
 }
 
-.places > h1 {
+.places h1 {
 	font-size: 30px;
 	text-align: left;
 }
@@ -33,7 +33,7 @@
 	margin: 0 auto 60px auto;
 }
 
-.places > .price_by_night {
+.places .price_by_night {
 	color: #FF5A5F;
 	border: 4px solid #FF5A5F;
 	border-radius: 50%;
@@ -48,7 +48,7 @@
 	align-items: center;
 }
 
-.places > .information {
+.places .information {
 	height: 80px;
 	border-top: 1px solid #DDDDDD;
 	border-bottom: 1px solid #DDDDDD;
@@ -57,29 +57,29 @@
 	align-items: center;
 }
 
-.places > .max_guest, .places > .number_rooms, .places > .number_bathrooms {
+.places .max_guest, .places .number_rooms, .places .number_bathrooms {
 	width: 100px;
 	margin: auto 5px;
 }
 
-.places > .user {
+.places .user {
 	margin: 20px 0;
 }
 
-.places > .description {
+.places .description {
 	margin-bottom: 20px;
 }
 
-.places > .amenities {
+.places .amenities {
 	margin-top: 40px;
 }
 
-.places > .amenities > h2 {
+.places .amenities > h2 {
 	font-size: 16px;
 	border-bottom: 1px solid #DDDDDD;
 }
 
-.places > .amenities > li {
+.places .amenities li {
 	display: flex;
 	align-items: center;
 }
