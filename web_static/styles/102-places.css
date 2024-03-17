@@ -163,3 +163,13 @@
 		right: 10px;
 	}
 }
+
+@media screen and (max-width: 360px) {
+	.places article {
+		width: 300px;
+	}
+
+	.places .amenities > h2, .places .locations > h2 {
+		padding-bottom: 10px;
+	}
+}
