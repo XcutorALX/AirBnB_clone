@@ -110,4 +110,8 @@
 	.places h2 {
 		padding-bottom: 40px;
 	}
+
+	.places .user {
+		margin: 12px 0;
+	}
 }
