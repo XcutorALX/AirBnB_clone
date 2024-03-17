@@ -156,6 +156,9 @@
 	}
 
 	.price_by_night {
+		min-width: 45px;
+		height: 45px;
+		font-size: 23px;
 		top: 10px;
 		right: 10px;
 	}
