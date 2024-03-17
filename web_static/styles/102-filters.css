@@ -87,6 +87,8 @@
 
 	.amenities:hover > .popover, .locations:hover > .popover {
 		display: inline-block;
+		margin: 0px;
+		min-width: 100%;
 		width: auto;
 		max-width: 150%;
 	}
