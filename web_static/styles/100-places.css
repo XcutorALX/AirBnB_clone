@@ -29,14 +29,13 @@
 	position: relative;
 }
 
-.article > h2 {
+article > h2 {
 	padding-bottom: 60px;
 	text-align: center;
 }
 
 .places h2 {
 	font-size: 30px;
-	text-align: center;
 	margin: 0 auto;
 	padding-bottom: 30px;
 	text-align: left;
