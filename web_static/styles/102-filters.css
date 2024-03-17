@@ -66,7 +66,7 @@
 	padding-top: 20px;
 	display: none;
 	position: absolute;
-	top: 50%;
+	top: 100%;
 	z-index: 999;
 }
 
@@ -93,7 +93,6 @@
 	}
 
 	.amenities:hover > .popover, .locations:hover > .popover {
-		display: inline-block;
 		margin: 0px;
 		min-width: 100%;
 		width: auto;
