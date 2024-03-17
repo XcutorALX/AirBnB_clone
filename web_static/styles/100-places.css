@@ -6,6 +6,8 @@
 .places ul {
 	box-sizing: border-box;
 	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .places h1 {
@@ -82,4 +84,8 @@
 .places .amenities li {
 	display: flex;
 	align-items: center;
+}
+
+.places .amenities li img {
+	margin-right: 10px
 }
