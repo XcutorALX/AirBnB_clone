@@ -144,3 +144,9 @@
 		margin-top: 30px;
 	}
 }
+
+@media screen and (max-width: 480px) {
+	.places article {
+		width: 350px;
+	}
+}
