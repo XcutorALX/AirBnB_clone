@@ -99,4 +99,8 @@
 		width: auto;
 		max-width: 150%;
 	}
+
+	.search-button {
+		height: 37px;
+	}
 }
