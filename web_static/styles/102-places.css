@@ -114,4 +114,14 @@
 	.places .user {
 		margin: 12px 0;
 	}
+
+	.places .amenities > h2, .places .reviews h2 {
+		font-size: 14px;
+		border-bottom: 1px solid #DDDDDD;
+		padding-bottom: 12px;
+	}
+	
+	.places .amenities, .places .reviews {
+		margin-top: 30px;
+	}
 }
