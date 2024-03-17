@@ -57,6 +57,7 @@
 	border-bottom: 1px solid #DDDDDD;
 	display: flex;
 	justify-content: center;
+	padding: 5px auto;
 	align-items: center;
 }
 
