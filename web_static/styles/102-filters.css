@@ -96,4 +96,12 @@
 		width: auto;
 		max-width: 150%;
 	}
+
+	.filters h3 {
+		margin: auto;
+	}
+
+	.filters h4 {
+		margin: auto;
+	}
 }
