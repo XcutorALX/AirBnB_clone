@@ -111,10 +111,10 @@
 
 @media screen and (max-width: 480px) {
 	.filters h3 {
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 	.filters h4 {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
