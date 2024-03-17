@@ -117,4 +117,8 @@
 	.filters h4 {
 		font-size: 12px;
 	}
+
+	.search-container {
+		height: 50px;
+	}
 }
