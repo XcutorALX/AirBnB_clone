@@ -147,6 +147,16 @@
 
 @media screen and (max-width: 480px) {
 	.places article {
-		width: 350px;
+		width: 320px;
+		padding: 10px;
+	}
+
+	.places h2 {
+		font-size: 26px;
+	}
+
+	.price_by_night {
+		top: 10px;
+		right: 10px;
 	}
 }
